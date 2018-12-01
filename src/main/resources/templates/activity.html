@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>活动</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-table.css}">
+    <link rel="stylesheet" th:href="@{/css/affix.css}">
+    <link rel="stylesheet" th:href="@{/css/commons.css}">
+
+</head>
+<body>
+<!--引入顶端导航-->
+<div th:replace="topBar::topbar"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 col-xs-12" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+                <li class="active"><a href="#activityList">活动列表</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="activityList">活动列表</div>
+                <div class="panel-body">
+                    <div id="toolbar" class="btn-group">
+                        <a role="button" id="btn_add" type="button" class="btn btn-default" th:href="@{/adminpioneer/admin/activity}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                        </a>
+                        <button id="btn_delete" type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
+                        </button>
+                    </div>
+                    <table id="activityListTable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/jquery/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap-table.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap-table-zh-CN.js}"></script>
+<script type="text/javascript" th:src="@{/js/activity.js}"></script>
+<script type="text/javascript" th:src="@{/js/index.js}"></script>
+</body>
+</html>

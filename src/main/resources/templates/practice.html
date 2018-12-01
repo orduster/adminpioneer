@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创新创业课程</title>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" th:href="@{/css/commons.css}">
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+<!--引入顶端导航-->
+<div th:replace="topBar::topbar"></div>
+<div class="container">
+    <form class="form-horizontal" th:action="@{/adminpioneer/admin/practice}" method="post">
+        <input type="hidden" name="_method" value="put" th:if="${practice!=null}">
+        <div class="form-group">
+            <label for="test-editormd" class="col-sm-2 control-label">正文</label>
+            <!--class="editormd"-->
+            <div id="test-editormd" class="col-sm-10">
+                <!--实际内容-->
+                <textarea style="display:none;" class="test-editormd-markdown-doc" name="content"
+                          placeholder="请输入内容" id="content" th:text="${practice!=null}?${practice.content}"></textarea>
+                <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+                <textarea class="editormd-html-textarea" name="text" id="text"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" id="submitBtn">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script th:src="@{/jquery/jquery.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+<script th:src="@{/editormd/js/editormd.min.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        editormd("test-editormd", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+            tocm: true, // Using [TOCM]
+            tex: true, // 开启科学公式TeX语言支持，默认关闭
+            flowChart: true, // 开启流程图支持，默认关闭
+            //static->editormd/lib/
+            path: "/editormd/lib/",
+            //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+            saveHTMLToTextarea: true,
+            imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: "/uploadImages",
+            onload: function () {
+                this.width("80%");
+                this.height("80%");
+            }
+        });
+    });
+</script>
+</body>
+</html>

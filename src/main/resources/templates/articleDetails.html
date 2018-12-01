@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>详情</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/articleDetails.css}">
+    <link rel="stylesheet" th:href="@{/css/commons.css}">
+</head>
+<body>
+
+<!--引入顶端导航-->
+<div th:replace="topBar::topbar"></div>
+
+<div class="container">
+    <div class="row info">
+        <div class="col-md-12">
+            <!--页头-->
+            <div class="page-header" style="text-align: center;">
+                <h1 th:text="${article.title}"></h1>
+            </div>
+            <!--内容主体-->
+            <div th:utext="${article.text}"></div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/jquery/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

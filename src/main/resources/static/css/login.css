@@ -1,0 +1,24 @@
+.panel-default > .panel-heading {
+    font-size: 20px;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #ddd;
+}
+
+.form-group {
+    margin-bottom: 35px;
+}
+
+.panel.panel-default {
+    margin-top: 10%;
+}
+
+button.btn.login-button {
+    width: 130px;
+    color: #fff;
+    background-color: #337ab7;
+}
+
+button.btn.login-button:hover {
+    background-color: #3365a2;
+}
